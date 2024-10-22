@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">
+                    Categories
+                </h1>
+                <p class="lead fw-normal text-white-50 mb-0">
+                    Choose Your Category Below... 
+                </p>
+            </div>
+            {% comment %} <img src="{% static 'startbootstrap-shop-homepage-gh-pages/assets/High End Urban Store.jpeg' %}" alt="High End Store" width=1300 height=700 > {% endcomment %}
+        </div> 
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <center>
+                <div class="col-8">
+                    <br></br>
+                    <!-- Calling All Categories -->
+                    
+                    {% for category in categories %}
+                    <h3><a href={% url 'category' category %}>{{ category }}</a></h3>
+
+                    {% endfor %}
+
+
+                    <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                </div>
+            </center>
+
+        </div>
+
+    </div>
+{% endblock %}
