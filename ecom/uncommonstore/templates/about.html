@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">
+                    About UnCommon
+                </h1>
+                <p class="lead fw-normal text-white-50 mb-0">
+                    Welcome to the about page 
+                </p>
+            </div>
+            {% comment %} <img src="{% static 'startbootstrap-shop-homepage-gh-pages/assets/High End Urban Store.jpeg' %}" alt="High End Store" width=1300 height=700 > {% endcomment %}
+        </div> 
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <center>
+                <div class="col-8">
+                    <p align=justify>
+                        At UnCommon, we are more than just a boutique – we are a celebration of individuality and bold expression. Catering to the urban 
+                        customer who refuses to blend in, we offer a curated selection of fashion that reflects the cutting-edge spirit of city life. 
+                        Our collections are handpicked for those who value authenticity and style, ensuring that every piece you wear tells a story of 
+                        confidence and creativity.
+                        <br></br>
+                        We proudly stock high-end fashion brands, alongside rare and exclusive collaborations that you won’t find anywhere else. 
+                        Whether you’re looking for the latest drop from a luxury label or a unique piece from an emerging designer, UnCommon has something 
+                        for every discerning fashionista. Our boutique is a destination for those who appreciate the art of fashion and seek out designs 
+                        that make a statement.
+                        <br></br>
+                        For those who truly want to stand out, we offer customisation services to personalize your look and make it uniquely yours. 
+                        Whether it’s a bespoke design or a limited-edition piece tailored to your style, UnCommon ensures that you’ll always turn heads and 
+                        set trends wherever you go. At UnCommon, fashion is more than what you wear – it’s how you live.
+                        <br></br>
+                    </p>
+                </div>
+            </center>
+
+        </div>
+
+    </div>
+{% endblock %}

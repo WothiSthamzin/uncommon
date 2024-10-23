@@ -1,0 +1,27 @@
+# Logs
+*.log
+
+# Virtual Environment
+venv/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Django Specific files
+*.log
+*.pot
+*.sqlite3
+db.sqlite3
+
+# Environment Configuration Files
+.env
+*.env
+*.venv
+venv/
+env/
+ENV/
+env.bak/
+
