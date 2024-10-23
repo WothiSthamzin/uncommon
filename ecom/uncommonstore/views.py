@@ -6,56 +6,71 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
-# Create your views here.
 def search(request):
+    """Render the search results page."""
     return render(request, "search.html", {})
 
 def category_summary(request):
+    """Display a summary for all categories"""
     categories = Category.objects.all()
     return render(request, "category_summary.html", {'categories':categories})
 
 def category(request,foo):
-    # Replacing Hyphens with spaces
+    """
+    Display products within a specific category.
+
+    Args:
+        request: The HTTP request object.
+        foo (str): The category name (with hyphens replaced by spaces).
+
+    Returns:
+        Rendered category page with products or redirects to home if the category doesn't exist.
+    """
     foo = foo.replace('_', ' ')
-    # 'Category' from 'url'
     try:
-        # Call Up 'Category'
         category = Category.objects.get(name=foo)
         products = Product.objects.filter(category=category)
         return render(request, 'category.html', {'products':products, 'category':category})
 
-    # If 'Category' doesn't exist
     except:
         messages.success(request, ("That Category Doesn't Exist."))
         return redirect('home')
 
 
 def product(request,pk):
+    """Display a specific product based on its primary key."""
     product = Product.objects.get(id=pk)
     return render(request, 'product.html', {'product':product})
 
 def home(request):
+    """Display the home page with all products."""
     products = Product.objects.all()
     return render(request, 'home.html', {'products':products})
 
 def about(request):
+    """Render the about page."""
     return render(request, 'about.html', {})
 
 def login_user(request):
-    # For logging in
+    """
+    Handle user login.
+
+    Args:
+        request: The HTTP request object.
+
+    Returns:
+        Redirect to home on successful login or re-render login page with error message.
+    """
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
-        # To 'authenticate'
         user = authenticate(request, username=username, password=password)
-        # If 'username' is not blank
+
         if user is not None:
-            # PASS IN
             login(request, user)
             messages.success(request, ("You Have Been Logged In!"))
             return redirect('home')
 
-        # If authentication is not successful
         else:
             messages.success(request, ("There Was An Error, Please Try Again."))
             return redirect('login')
@@ -63,21 +78,26 @@ def login_user(request):
         return render(request, 'login.html', {})
 
 def logout_user(request):
+    """Handle user logout and redirect to home."""
     logout(request)
     messages.success(request, ("You have been logged out."))
     return redirect('home')
 
 def register_user(request):
-    # For 'form' submission :
+    """
+    Handle user registration.
+
+    Args:
+        request: The HTTP request object.
+
+    Returns:
+        Redirect to login page after successful registration or re-render registration page with form.
+    """
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
-        # If 'form' is valid, user will be saved/registered
         if form.is_valid():
             form.save()
-            # Once registered, user will be redirected to homepage
             return redirect('login')
-    # For empty form
     else:
         form = UserCreationForm
-    # If 'form' is not valid
     return render(request, 'register.html', {"form":form})
