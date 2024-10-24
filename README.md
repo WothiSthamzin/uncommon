@@ -1,6 +1,6 @@
 # Uncommon Store
 
-This is the Uncommon Store web application, built with Django. The application allows users to browse, add to a cart, and purchase unique fashion items.
+This is the Uncommon Store web application, built with Django. The application allows users to browse, add to a cart, and register users.
 
 ## Getting Started
 
