@@ -16,8 +16,8 @@ To get this project up and running locally on your machine, follow the instructi
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/uncommonstore.git
-    cd uncommonstore
+    git clone https://github.com/wothisthamzin/uncommon.git
+    cd ecom
     ```
 
 2. Create a virtual environment:
